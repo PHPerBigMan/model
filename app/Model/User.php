@@ -8,7 +8,9 @@ class User extends Model
 {
     protected $table = "user";
     protected $fillable = ["openid","nickname","avatar","introduction","grade"];
-
+    public function card(){
+        return $this->hasOne(Card::class,"user_id","id");
+    }
     /**
      * @param $code
      * @return \Illuminate\Http\JsonResponse

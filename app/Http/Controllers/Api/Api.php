@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Api;
 
+use App\Model\Card;
 use App\Model\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -19,7 +20,6 @@ class Api extends Controller
         return User::updateInfo($get);
     }
 
-
     /**
      * @param Request $request
      * @return \Illuminate\Http\JsonResponse
@@ -29,5 +29,15 @@ class Api extends Controller
         $openid = $request->input('id');
         $file   = $request->file('avatar')->store('user','user');
         return User::updateAvatar($openid,$file);
+    }
+
+    /**
+     * @param Request $request
+     * @return \Illuminate\Http\JsonResponse
+     * 模卡增修
+     */
+    public function addCard(Request $request){
+        $get = $request->except(['s']);
+        return Card::addCard($get);
     }
 }

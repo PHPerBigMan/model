@@ -22,6 +22,8 @@ Route::group(['namespace'=>'Api'],function(){
     Route::any("/update","Api@updateInfo");
     // 修改头像
     Route::any("/updateAvatar","Api@updateAvatar");
+    // 添加模卡
+    Route::any("/card/add","Api@addCard");
 });
 
 
